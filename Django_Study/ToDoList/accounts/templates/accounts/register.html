@@ -1,0 +1,11 @@
+{% extends 'api/base.html' %}
+
+{% block title %}Create an Account{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" >Register</button>
+    </form>
+{% endblock %}

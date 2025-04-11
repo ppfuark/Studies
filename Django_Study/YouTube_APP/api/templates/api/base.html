@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | YouTube Clone</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'api/css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <button class="menu-btn"><i class="fas fa-bars"></i></button>
+                <div class="logo">
+                    <i class="fab fa-youtube youtube-icon"></i>
+                    <span>YouTube</span>
+                </div>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" placeholder="Pesquisar">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="voice-search-btn"><i class="fas fa-microphone"></i></button>
+            </div>
+            <div class="header-right">
+                <button class="header-icon"><i class="fas fa-video"></i></button>
+                <button class="header-icon"><i class="fas fa-bell"></i></button>
+                <button class="header-icon"><i class="fas fa-user-circle"></i></button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Início</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-compass"></i>
+                        <span>Explorar</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Inscrições</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Biblioteca</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-history"></i>
+                        <span>Histórico</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Video Content -->
+            <main class="video-content">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+</body>
+</html>
