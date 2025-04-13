@@ -62,3 +62,12 @@ class UserView(APIView):
         serializer = UserSerializer(user)
 
         return Response(serializer.data)
+    
+class LogoutView(APIView):
+    def post(self, resquest):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = {
+            'message':'success'
+        }
+        return response
