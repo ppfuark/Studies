@@ -1,3 +1,4 @@
+from jwt.exceptions import DecodeError
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -6,6 +7,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from .serializers import UserSerializer
 from .models import User
 import jwt, datetime
+from jwt.exceptions import DecodeError
 
 # Create your views here.
 class RegisterView(APIView):
@@ -31,11 +33,11 @@ class LoginView(APIView):
 
         payload = {
             'id': user.id,
-            'exp': datetime.timezone.utc() + datetime.timedelta(minutes=60),
-            'iat': datetime.timezone.utc()
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'iat': datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, 'secret', algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, 'secret', algorithm='HS256')
 
         response = Response()
 
@@ -44,7 +46,7 @@ class LoginView(APIView):
             'jwt': token
         }
 
-        return 
+        return response
     
 class UserView(APIView):
     def get(self, request):
@@ -53,10 +55,14 @@ class UserView(APIView):
         if not token:
             raise AuthenticationFailed("Unauthenticated!")
 
+
+        print(token)
         try:
-            payload = jwt.decode(token, 'secret', algorithm=['HS256'])
+            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed("Unauthenticated!")
+        except DecodeError:
+            raise AuthenticationFailed("Invalid token format!")
         
         user = User.objects.filter(id=payload['id']).first()
         serializer = UserSerializer(user)
