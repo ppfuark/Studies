@@ -1,0 +1,10 @@
+.newyear-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10rem;
+    text-align: center;
+    color: aliceblue;
+    background-color: black;
+}
