@@ -1,0 +1,8 @@
+{% extends 'api/base.html' %}
+{% block title %}Home using render{% endblock %}
+{% block content %}
+    <h1>Render Aplication</h1>
+    <p>Args: {{args}}</p>
+    <p>Kwargs: {{kwargs}}</p>
+    <p>Req: {{req.user}}</p>
+{% endblock %}
