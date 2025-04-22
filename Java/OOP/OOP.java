@@ -1,16 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class OOP {
     public static void main(String[] args) {
+        // ======================= Single Instances ==============================
         User user = new User();
         user.setName("ph.fuark");
         user.setName("ph.fuark", "7");
         user.setAge(17);
-
-        System.out.println(user.get_name());
-        System.out.println(user.getAge());
-        System.out.println(User.isAdult(user));
-        System.out.println(user.getUserType());
-
-        System.out.println("");
 
         Student student = new Student();
         student.setName("ph.fuark");
@@ -18,11 +15,19 @@ public class OOP {
         student.setAge(17);
         student.setRegister(true);
 
-        System.out.println(student.get_name());
-        System.out.println(student.getAge());
-        System.out.println(Student.isAdult(student));
-        System.out.println(student.getRegister());
-        System.out.println(student.getUserType());
+        // ======================= Polymorphic List =============================
+        List<User> users = new ArrayList<>();
+        users.add(user);
+        users.add(student);
+
+        // ======================= Loop and Demonstrate Polymorphism ============
+        for (User u : users) {
+            System.out.println("Name: " + u.get_name());
+            System.out.println("Age: " + u.getAge());
+            System.out.println("Is Adult: " + User.isAdult(u));
+            System.out.println("User Type: " + u.getUserType());
+            System.out.println();
+        }
     }
 }
 
