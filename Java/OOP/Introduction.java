@@ -7,9 +7,10 @@ public class Introduction{
         User user = new User();
         user.setName("ph.fuark");
         user.setName("ph.fuark", "7");
-        user.set_age(17);
+        user.setAge(17);
         System.out.println(user.get_name());
-        System.out.println(user.get_age());
+        System.out.println(10);
+        System.out.println(user.getAge());
     }
 }
 
@@ -17,12 +18,21 @@ class User{
     private String _name;
     private int _age;
 
+    public User(){
+
+    }
+
+    public User(String name, String lastName, int age){
+        setName(name, lastName);
+        setAge(age);
+    }
+
     public void setName(String name){
         _name = name;
     }
 
      // Overloaded version of setName with first and last name
-     public void setName(String firstName, String lastName) {
+     public final void setName(String firstName, String lastName) {
         _name = firstName + " " + lastName;
     }
 
@@ -32,10 +42,10 @@ class User{
 
 // ==============================================================================================================
 
-    public void set_age(int age){
+    public final void setAge(int age){
         _age = age;
     }
-    public int get_age() {
+    public int getAge() {
         return _age;
     }
 }
