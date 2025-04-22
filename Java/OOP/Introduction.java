@@ -6,9 +6,10 @@ public class Introduction{
 
         User user = new User();
         user.setName("ph.fuark");
-        user.setAge(17);
-        System.out.println(user.getName());
-        System.out.println(user.getAge());
+        user.setName("ph.fuark", "7");
+        user.set_age(17);
+        System.out.println(user.get_name());
+        System.out.println(user.get_age());
     }
 }
 
@@ -19,14 +20,22 @@ class User{
     public void setName(String name){
         _name = name;
     }
-    public String getName() {
+
+     // Overloaded version of setName with first and last name
+     public void setName(String firstName, String lastName) {
+        _name = firstName + " " + lastName;
+    }
+
+    public String get_name() {
         return _name;
     }
 
-    public void setAge(int age){
+// ==============================================================================================================
+
+    public void set_age(int age){
         _age = age;
     }
-    public int getAge() {
+    public int get_age() {
         return _age;
     }
 }
