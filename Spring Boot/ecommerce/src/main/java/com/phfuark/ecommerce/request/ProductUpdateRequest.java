@@ -1,12 +1,12 @@
 package com.phfuark.ecommerce.request;
 
 import lombok.Data;
-import model.Category;
+import com.phfuark.ecommerce.model.Category;
 
 import java.math.BigDecimal;
 
 @Data
-public class ProdcutUpateRequest {
+public class ProductUpdateRequest {
     private Long id;
     private String name;
     private String brand;
@@ -15,3 +15,4 @@ public class ProdcutUpateRequest {
     private String description;
     private Category category;
 }
+

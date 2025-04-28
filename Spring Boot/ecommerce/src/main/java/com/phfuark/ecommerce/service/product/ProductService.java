@@ -2,11 +2,11 @@ package com.phfuark.ecommerce.service.product;
 
 
 import com.phfuark.ecommerce.exception.ProductNotFoundException;
-import com.phfuark.ecommerce.request.ProdcutUpateRequest;
-import model.Category;
+import com.phfuark.ecommerce.request.ProductUpdateRequest;
+import com.phfuark.ecommerce.model.Category;
 import com.phfuark.ecommerce.repository.CategoryRepository;
 import com.phfuark.ecommerce.repository.ProductRepository;
-import model.Product;
+import com.phfuark.ecommerce.model.Product;
 import com.phfuark.ecommerce.request.AddProductRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -44,14 +44,14 @@ public class ProductService implements ProductServiceInterface {
     }
 
     @Override
-    public Product updateProductById(ProdcutUpateRequest request, Long productId) {
+    public Product updateProductById(ProductUpdateRequest request, Long productId) {
         return productRepository.findById(productId)
                 .map(existingProduct -> updateExistingProduct(existingProduct, request))
                 .map(productRepository::save)
                 .orElseThrow(()->new ProductNotFoundException("Product not found!"));
     }
 
-    private Product updateExistingProduct(Product existingProduct, ProdcutUpateRequest request){
+    private Product updateExistingProduct(Product existingProduct, ProductUpdateRequest request){
         existingProduct.setName(request.getName());
         existingProduct.setBrand(request.getBrand());
         existingProduct.setPrice(request.getPrice());
@@ -84,17 +84,17 @@ public class ProductService implements ProductServiceInterface {
 
     @Override
     public List<Product> getProductsByCategory(String category) {
-        return productRepository.findByCategory(category);
+        return productRepository.findByCategory_Name(category);
     }
 
     @Override
-    public List<Product> getProdcutsByBrand(String brand) {
+    public List<Product> getProductsByBrand(String brand) {
         return productRepository.findByBrand(brand);
     }
 
     @Override
     public List<Product> getProductsByCategoryAndBrand(String category, String brand) {
-        return productRepository.findByCategoryAndBrand(category, brand);
+        return productRepository.findByCategory_NameAndBrand(category, brand);
     }
 
     @Override
