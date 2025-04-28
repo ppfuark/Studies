@@ -1,11 +1,10 @@
-package com.phfuark.ecommerce.model;
+package model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Blob;
-
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

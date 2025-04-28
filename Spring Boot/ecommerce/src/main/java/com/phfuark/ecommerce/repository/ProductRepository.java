@@ -1,6 +1,6 @@
 package com.phfuark.ecommerce.repository;
 
-import com.phfuark.ecommerce.model.Product;
+import model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

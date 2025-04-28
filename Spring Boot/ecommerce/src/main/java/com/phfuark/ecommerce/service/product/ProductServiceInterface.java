@@ -1,14 +1,16 @@
 package com.phfuark.ecommerce.service.product;
 
-import com.phfuark.ecommerce.model.Product;
+import com.phfuark.ecommerce.request.ProdcutUpateRequest;
+import model.Product;
+import com.phfuark.ecommerce.request.AddProductRequest;
 
 import java.util.List;
 
 public interface ProductServiceInterface {
-    Product addProduct(Product product);
+    Product addProduct(AddProductRequest request);
     Product getProductById(Long id);
     void deleteProductById(Long id);
-    void updateProductById(Product product, Long productId);
+    Product updateProductById(ProdcutUpateRequest product, Long productId);
     List<Product> getAllProducts();
     List<Product> getProductsByCategory(String category);
     List<Product> getProdcutsByBrand(String brand);
