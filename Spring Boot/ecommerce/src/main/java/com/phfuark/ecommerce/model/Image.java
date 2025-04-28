@@ -1,4 +1,4 @@
-package model;
+package com.phfuark.ecommerce.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +17,7 @@ public class Image {
     private String fileType;
 
     @Lob
-    private Blob blob;
+    private byte[] image_data;
     private String downloadUrl;
 
     @ManyToOne
