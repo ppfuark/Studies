@@ -1,60 +1,100 @@
 
-#🧠 RAG Local com Ollama
+# 🧠 RAG Local com Ollama
 
-Este projeto implementa um pipeline de RAG (Retrieval-Augmented Generation) local utilizando o LangChain, armazenamento vetorial com ChromaDB, e LLMs executados via Ollama (como Mistral).
+Este projeto implementa um pipeline de **RAG (Retrieval-Augmented Generation)** local, utilizando [LangChain](https://github.com/langchain-ai/langchain), armazenamento vetorial com [ChromaDB](https://www.trychroma.com/), e modelos de linguagem executados via [Ollama](https://ollama.com/) (ex: Mistral).
 
-#📌 Objetivo
+---
 
-Permitir que modelos LLM executados localmente possam responder perguntas com base em documentos PDF locais, combinando recuperação semântica e geração de linguagem natural.
+## 📌 Objetivo
 
-#⚙️ Funcionalidades
+Permitir que modelos LLM executados localmente respondam perguntas com base em documentos PDF locais, combinando **recuperação semântica** com **geração de linguagem natural**.
 
-- Indexação vetorial de PDFs usando embeddings com sentence-transformers/all-MiniLM-L6-v2.
-- Armazenamento persistente com Chroma.
-- Consultas via CLI com respostas geradas por modelos Ollama.
-- Validação automatizada de respostas via autoavaliação com outro LLM.
+---
 
-🧱 Estrutura
+## ⚙️ Funcionalidades
 
+- ✅ Indexação vetorial de PDFs usando `sentence-transformers/all-MiniLM-L6-v2`
+- 💾 Armazenamento persistente com ChromaDB
+- 💬 Interface de consulta via linha de comando (CLI)
+- 🔍 Validação automatizada de respostas com LLM auxiliar
+
+---
+
+## 🧱 Estrutura de Pastas
+
+```
 rag/
 ├── data/                        # PDFs que serão processados
 ├── chroma/                      # Persistência da base vetorial
 ├── get_embedding_function.py    # Função de embedding via HuggingFace
-├── index_data.py                # Indexação de documentos e geração da base vetorial
-├── query_data.py                # Consulta ao banco vetorial + resposta via Ollama
-├── test_validation.py           # Validação automática de respostas
+├── index_data.py                # Indexação dos documentos PDF
+├── query_data.py                # Consulta + geração de respostas com Ollama
+├── test_validation.py           # Validação automatizada das respostas
 ├── requirements.txt             # Dependências do projeto
-└── README.md                    # Este arquivo
+└── README.md                    # Documentação
+```
 
-#▶️ Como Usar
+---
 
-1. Instalar dependências
+## ▶️ Como Usar
 
-    pip install -r requirements.txt
+### 1. Instalar as dependências
 
-2. Preparar o modelo no Ollama
+```bash
+pip install -r requirements.txt
+```
 
-    ollama run mistral
+### 2. Preparar o modelo no Ollama
 
-3. Indexar PDFs
+Certifique-se de que o Ollama está instalado e execute o modelo desejado:
 
-    Coloque seus arquivos .pdf na pasta data/ e execute:
+```bash
+ollama run mistral
+```
 
-    python index_data.py --reset
+### 3. Indexar documentos PDF
 
-4. Fazer perguntas
+Coloque seus arquivos `.pdf` na pasta `data/` e execute:
 
-    python query_data.py "Qual é o valor inicial em dinheiro no jogo Banco Imobiliário?"
+```bash
+python index_data.py --reset
+```
 
-5. Rodar testes automáticos
+### 4. Fazer perguntas
 
-    pytest test_validation.py
+Use o CLI para fazer perguntas aos seus documentos:
 
-#📦 Dependências
+```bash
+python query_data.py "Qual é o valor inicial em dinheiro no jogo Banco Imobiliário?"
+```
 
-- langchain
-- chromadb
-- sentence-transformers
-- pypdf
-- ollama
-- pytest
+### 5. Rodar testes automatizados
+
+Opcional: execute testes de validação automática com:
+
+```bash
+pytest test_validation.py
+```
+
+---
+
+## 📦 Dependências
+
+- `langchain`
+- `chromadb`
+- `sentence-transformers`
+- `pypdf`
+- `ollama`
+- `pytest`
+
+---
+
+## 📝 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
