@@ -99,3 +99,21 @@ squares = list(map(lambda x: x * x, nums))
 
 **Analogy:**  
 **City Metro Map**: Stations (nodes) are connected by routes (edges), with different lines (conditional paths) determining how you travel between them.  
+
+---  
+
+## <span style="color: rgb(213, 151, 255); font-weight: bold;">Edge</span>
+- A **Edge** are the connections between nodes that determine the flow of executation.  
+
+**Analogy:**  
+**Train Tracks**: Each track(Edge) connects the stations(nodes) together in a specific direction.  
+
+---  
+
+## <span style="color: rgb(213, 151, 255); font-weight: bold;">Conditional Edges</span>
+- A **Conditional Edges** are specialized connections 
+that decide the next node to execute based on specific conditions or logic applied to the current state. 
+
+**Analogy:**  
+**Traffic Lights**: Green means go one way, red 
+means stop, yellow means slow down. The condition (light color) decides the next step..  
