@@ -41,7 +41,7 @@ def query_rag(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
 
-    model = OllamaLLM(model="mistral")
+    model = OllamaLLM(model="deepseek-r1:1.5b")
     response_text = model.invoke(prompt)
 
     formatted_response = f"Response: {response_text}"
