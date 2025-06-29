@@ -29,3 +29,13 @@ tsc --init
 - Creates a `tsconfig.json` file
 - Configures how TypeScript compiles your code
 - Allows using just `tsc` without specifying file paths
+
+## ⚙️ Create a `.js` script out of the `.ts` dir
+```js
+tsc src/script.ts --outDir public
+```
+
+## 🛠️ Don´t generate the `.js` script if the `.ts` have some error
+```js
+tsc src/script.ts --noEmitOnError
+```
